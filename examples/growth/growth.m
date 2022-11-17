@@ -1,6 +1,6 @@
 %  Add paths to data and functions
 
-addpath ('..\..\..')
+addpath ('..\..')
 
 %  Last modified 28 June 2016
 
@@ -84,8 +84,8 @@ hgtffd = smooth_basis(age, hgtfmat, hgtfdPar);
 
 %  plot the data and the smooth
 
-%plotfit_fd(hgtmmat, age, hgtmfd)
-%plotfit_fd(hgtfmat, age, hgtffd)
+plotfit_fd(hgtmmat, age, hgtmfd)
+plotfit_fd(hgtfmat, age, hgtffd)
 
 %  ---------------------------------------------------------------
 %         Find minimum GCV value of lambda
@@ -212,7 +212,7 @@ ylabel('\fontsize{12} Acceleration (cm/yr^2)')
 axis([1,18,-12,2])
 axis('square')
 
-%print -dps2 'c:/MyFiles/fdabook1/figs.dir/twoaccelplots.ps'
+print -dps2 'c:/MyFiles/fdabook1/figs.dir/twoaccelplots.ps'
 
 subplot(1,1,1)
 phdl = plot(agefine, D2hgtfmat35, 'k-', [1,18], [0,0], 'k:');
@@ -234,7 +234,6 @@ axis([1,18,-4,2])
 norderse = 3;
 nbasisse = nage + norderse - 2;
 stderrbasis = create_bspline_basis([1,18], nbasisse, norderse, age);
-%stderrbasis = create_bspline_basis([1,18], nbasisse, norderse); % no knots
 Wfd0   = fd(zeros(nbasisse,1),stderrbasis);  %  initial value for Wfd
 
 %  Males
@@ -277,7 +276,7 @@ hgtfdpar = fdPar(hgtbasis, Lfdobj, lambda);
 
 %  display the results
 
-% growthdisplay(age, hgtmmat, hgtmfd, hgtmstd, y2cMap, 'male')
+growthdisplay(age, hgtmmat, hgtmfd, hgtmstd, y2cMap, 'male')
 
 %  Females
 
@@ -302,7 +301,7 @@ plot(age, hgtfresmnsqr, 'ko', age, hgtfvar, 'k-')
 xlabel('\fontsize{16} Age')
 ylabel('\fontsize{16} Variance of Measurement')
 
-%print -dps2 'c:/MyFiles/fdabook1/figs.dir/growthvariance.ps'
+print -dps2 'c:/MyFiles/fdabook1/figs.dir/growthvariance.ps'
 
 %  update weight vector for smoothing data
 
@@ -333,7 +332,7 @@ axis([1,18,-4,2])
 
 %  display the results
 
-% growthdisplay(age, hgtfmat, hgtffd, hgtfstd, y2cMap, 'female')
+growthdisplay(age, hgtfmat, hgtffd, hgtfstd, y2cMap, 'female')
 
 %  ----------------------------------------------------------
 %          Compute monotone smooths of the data  
@@ -394,7 +393,7 @@ for i = index
   plot(age, D2hgtmhat, '-')
   axis([1,18,-6,6]);
   xlabel('Years') ;  title('Acceleration')
-%  pause;
+  pause;
 end
 
 % Females:
@@ -422,7 +421,7 @@ for i = index
   plot(age, D2hgtfhat, '-',  [1,18], [0,0], 'r--')
   axis([1,18,-6,6]);
   xlabel('Years') ;  title('Acceleration')
-%  pause;
+  pause;
 end
 
 %  Compute velocity functions over a fine mesh
@@ -492,21 +491,21 @@ load growth_registration
 %  Define the mid-spurt as the single landmark by manually
 %    clicking on the zero crossing
 
-%index = 1:ncasef;
-%midspurtsave = zeros(length(index),2);
-%D2hgtfmat    = zeros(ncasef, length(agefine));
-%subplot(1,1,1)
-%for i = index
-%  Wfdi  = fd(cvecf(:,i),wbasis);
-%  beta = betaf(:,i);
-%  D2hgtfmat(i,:) = beta(2).*eval_mon(agefine, Wfdi, 2);
-%  plot(agefine, D2hgtfmat(i,:), '-', [1,18], [0,0], 'r:')
-%  axis([1,18,-6,6]);
-%  xlabel('Years') ;  
-%  title(['Acceleration for record ',num2str(i)])
-%  midspurtsave(i,:) = ginput(1);
-%  pause;
-%end
+index = 1:ncasef;
+midspurtsave = zeros(length(index),2);
+D2hgtfmat    = zeros(ncasef, length(agefine));
+subplot(1,1,1)
+for i = index
+  Wfdi  = fd(cvecf(:,i),wbasis);
+  beta = betaf(:,i);
+  D2hgtfmat(i,:) = beta(2).*eval_mon(agefine, Wfdi, 2);
+  plot(agefine, D2hgtfmat(i,:), '-', [1,18], [0,0], 'r:')
+  axis([1,18,-6,6]);
+  xlabel('Years') ;  
+  title(['Acceleration for record ',num2str(i)])
+  midspurtsave(i,:) = ginput(1);
+  pause;
+end
 
 %  This is an automatic PGS spurt identification procedure.
 %  A mouse click advances the plot to the next case.
@@ -550,8 +549,8 @@ for icase = 1:ncasef
     end
     hold off
     title(['Case ',num2str(icase)])
-%    pause
- end
+    pause
+end
 
 save PGSctr
 
@@ -605,7 +604,7 @@ for i=1:ncasef
     xlabel('Years')
     title(['Case ',num2str(i)])
     axis('square')
-%    pause
+    pause
 end
 
 %  plot accelerations and warping functions for cases 3 and 7
@@ -1041,7 +1040,7 @@ plot(fit(:),accdist(:), 'o')
 [bdryind,Area] = convhull(y);
 
 figure(4)
-plot(y(bdryind,1),y(bdryindK,2),'o-')
+plot(y(bdryind,1),ybdryindK,2),'o-')
 
 %  compute delaunay triangulation
 

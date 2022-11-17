@@ -12,11 +12,10 @@ function horzcatfd = horzcat(xfd, yfd)
   end
 
   coefs    = getcoef(xfd);
-  basisobjx = getbasis(xfd);
-  basisobjy = getbasis(yfd);
+  basisobj = getbasis(xfd);
   dimcoef  = size(coefs);
   ndimcoef = length(dimcoef);
-  if ~eq( basisobjx, basisobjy )
+  if yfd.basisobj ~= basisobj
     error('Objects must all have the same basis');
   end
   if length(size(getcoef(yfd))) ~= ndimcoef
@@ -30,5 +29,5 @@ function horzcatfd = horzcat(xfd, yfd)
                /(dimcoef(1) * dimcoef(3))]);
     coefs = permute(coefs, [1, 3, 2]);
   end
-  horzcatfd = fd(coefs, basisobjx);
+  horzcatfd = fd(coefs, basisobj);
 

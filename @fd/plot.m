@@ -114,7 +114,7 @@ fdnames  = getnames(fdobj);
 %  --------------------  Plot for a single variable  ----------------------
 
 if ndim == 2
-    % subplot(1,1,1)
+    subplot(1,1,1)
     if matplt
         %  plot all curves
         if href && (frng(1) <= 0 && frng(2) >= 0)

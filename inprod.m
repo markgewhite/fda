@@ -243,6 +243,7 @@ end
 %  ------------------------------------------------------------
 
 % The default case, no multiplicities.  
+
 rngvec = rng;  
 
 %  check for any knot multiplicities in either argument

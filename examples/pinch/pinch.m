@@ -4,8 +4,8 @@
 
 %  Last modified 26 July 2006
 
-addpath ('C:\Users\markg\Google Drive\PhD\MATLAB\FDA')
-addpath ('C:\Users\markg\Google Drive\PhD\MATLAB\FDA\examples\pinch')
+addpath ('c:\Program Files\matlab\fdaM')
+addpath ('c:\Program Files\matlab\fdaM\examples\pinch')
 
 %  ------------------  input the data  --------------------
 
@@ -61,7 +61,7 @@ pinchfdPar = fdPar(pinchbasis, 2, lambda);
 nharm  = 3;
 pinchpcastr = pca_fd(pinchfd, nharm, pinchfdPar);
 
-plot_pca_fd(pinchpcastr)
+plot_pca(pinchpcastr)
 
 pincheigvals = pinchpcastr.values;
 x = ones(17,2);

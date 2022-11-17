@@ -112,7 +112,7 @@ disp(['RMS GCV = ',num2str(RMSgcv)])
 %  plot the fit to the data.  It's good to within plotting
 %  accuracy, but the title displays RMSE values
 
-%plotfit_fd(fdaarray, fdatime, fdafd);
+plotfit_fd(fdaarray, fdatime, fdafd);
 
 %  plot all curves
 
@@ -164,7 +164,7 @@ fdapcastr = pca_fd(fdafd92, nharm, fdPar92);
 %  plot unrotated harmonics
 
 subplot(1,1,1)
-plot_pca_fd(fdapcastr)
+plot_pca(fdapcastr)
 
 %  Varimax rotation
 
@@ -173,7 +173,7 @@ fdarotpcastr = varmx_pca(fdapcastr);
 %  plot rotated harmonics
 
 subplot(1,1,1)
-plot_pca_fd(fdarotpcastr)
+plot_pca(fdarotpcastr)
 
 fdameanfd  = mean(fdafd92);
 fdameanmat = squeeze(eval_fd(fdatime, fdameanfd));
@@ -292,7 +292,7 @@ for i = 1:20
   axis([-.040, .040,-.040, .040]);
   title(['Record ', num2str(i)]);
   pause;
-  end
+end
 
 %  Plot the individual acceleration records.
 %  In these plots, acceleration is displayed as
@@ -438,7 +438,7 @@ awtcell{2} = constfdPar;
 %  functions.  One for a background analysis used as a
 %  baseline and using constant weight functions, and
 %  another using 125 basis functions that will be used
-%  to generate the equations.
+%  to generate the equaations.
 
 %  Set the number of basis functions to match the 
 %  119 msec clock time estimated above, so that the

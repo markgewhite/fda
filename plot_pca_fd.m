@@ -80,7 +80,7 @@ if length(dimfd) == 2
             fac = expand;
         end
         vecharm    = fdmat(:,iharm);
-        percentvar = round(100 * pcastr.varprop(iharm),2);
+        percentvar = round(100 * pcastr.varprop(iharm));
         meanplus   = meanmat+fac.*vecharm;
         meanminus  = meanmat-fac.*vecharm;
         plottop    = max([meanplus;meanminus]);
@@ -107,7 +107,7 @@ if length(dimfd) == 2
                 ' (Percentage of variability ',  ...
                 num2str(percentvar), ')'])
         end
-        if matplt % && length(harm) <= 4
+        if matplt && length(harm) <= 4
             if length(harm) > 2 && length(harm) <= 4
                 axis('square')
             end

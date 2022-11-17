@@ -2,7 +2,7 @@ addpath ('../..')
 
 load daily
 
-%addpath('/Users/jamesramsay/Documents/MATLAB/SpatialDA/emst')
+addpath('/Users/jamesramsay/Documents/MATLAB/SpatialDA/emst')
 
 %  display temperature-precipitation loops
 

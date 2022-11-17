@@ -48,7 +48,7 @@ function [regfd, warpfd, Wfd, shift, Fstr, iternum] = ...
 
 %  Set default arguments
 
-if nargin <  8, dbglev  =  0;    end
+if nargin <  8, dbglev  =  1;    end
 if nargin <  7, iterlim = 20;    end
 if nargin <  6, conv    = 1e-4;  end
 if nargin <  5, crit    =  2;    end
@@ -222,22 +222,7 @@ penmat  = sparse(penmat);
 for icurve = 1:ncurve
   if dbglev >= 1 && ncurve > 1
       fprintf(['\n\n-------  Curve ',num2str(icurve),'  --------\n'])
-  else
-      % MW: inserted succinct reporting step for dbglev=0
-      if ncurve > 1
-          if icurve == 1
-              fprintf('Curve ');
-          elseif mod(icurve,10)==0
-              fprintf('.');
-          end
-          if icurve == ncurve
-              fprintf('\n');
-          end
-      else 
-          fprintf('.');
-      end
-
-  end
+  end;
   if ncurve == 1
       yfdi  = yfd;
       y0fdi = y0fd;
@@ -332,7 +317,7 @@ for icurve = 1:ncurve
 
   iternum = 0;
   status = [iternum, Fstr.f, Fstr.norm];
-  if dbglev > 1
+  if dbglev >= 1
     fprintf('\nIter.    Criterion   Grad Length\n')
     fprintf('%3.f %12.4f %10.4f\n', status);
   end
@@ -510,11 +495,10 @@ for icurve = 1:ncurve
      end
      status = [iternum, Fstr.f, Fstr.norm];
      iterhist(iter+1,:) = status;
-     if dbglev >= 1  
+     if dbglev >= 1
        fprintf('%3.f %12.4f %10.4f\n', status);
      end
   end
-
   %  ---------------  end of optimization loop  -----------
   wcoef(:,icurve) = cvec;
   if nvar == 1

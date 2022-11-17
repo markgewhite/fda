@@ -88,7 +88,7 @@
 
 %  set path to fda functions
 
-%addpath('C:\Users\markg\Google Drive\PhD\MATLAB\FDA')
+addpath('c:/Program Files/Matlab/fdaM')
 
 %  load the data from gait.mat
 
@@ -150,7 +150,7 @@ gaitfd = putnames(gaitfd, gaitfd_fdnames);
 %  data pooints.  This plot is not shown because it requires
 %  interactivity.
 
-%plotfit_fd(gaitarray, time, gaitfd)
+% plotfit_fd(gaitarray, time, gaitfd)
 
 %%
 %  It must be admitted that there is some indication of non-periodicity
@@ -281,7 +281,7 @@ gaitpcastr = pca_fd(gaitfd, nharm, gaitfdPar);
 % Plot harmonics before rotation (not carried out because this requires
 % interactivity%
 
-%plot_pca(gaitpcastr);
+% plot_pca(gaitpcastr);
 
 disp(['Total proportion of variation accounted for = ', ...
       num2str(sum(gaitpcastr.varprop))])
@@ -296,7 +296,7 @@ gaitpcastr = varmx_pca(gaitpcastr);
 %  plot_pca, but instead we call special function gait_pca_plot once
 %  for each harmonic.
 
-%plot_pca(gaitpcastr);
+% plot_pca(gaitpcastr);
 
 %%
 %  Plot Harmonic I
@@ -553,7 +553,7 @@ gaitregpcastr = varmx_pca(gaitregpcastr);
 % plot_pca, but instead we call special function gait_pca_plot once
 % for each harmonic.
 
-%plot_pca(gaitpcastr);
+% plot_pca(gaitpcastr);
 
 %%
 % Plot harmonic I

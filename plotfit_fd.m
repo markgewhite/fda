@@ -29,7 +29,7 @@ basisobj = getbasis(fdobj);
 rangeval = getbasisrange(basisobj);
 nbasis   = getnbasis(basisobj);
 
-if nargin < 7 || isempty(rng), rng = rangeval; end
+if nargin < 8 || isempty(rng), rng = rangeval; end
 
 coef  = getcoef(fdobj);
 coefd = size(coef);
@@ -73,15 +73,15 @@ yfine = reshape(eval_fd(xfine, fdobj),[nfine,nrep,nvar]);
 
 if sortwrd && nrep > 1
     if nvar > 1
-	    [MSEj,MSEind] = sort(MSEsum,'descend'); % MW MODIFICATION
+	    [MSEj,MSEind] = sort(MSEsum);
         MSE = MSE(:,MSEind);
     else
-        [MSE,MSEind]  = sort(MSE,'descend'); % MW MODIFICATION
+        [MSE,MSEind]  = sort(MSE);
     end
 	y      = y(:,MSEind,:);
 	yfine  = yfine(:,MSEind,:);
 	res    = res  (:,MSEind,:);
-%    if ~isempty(casenames), casenames = casenames(MSEind,:); end
+    if ~isempty(casenames), casenames = casenames(MSEind,:); end
     casenum = casenum(MSEind);
 end
 
@@ -114,7 +114,7 @@ if residual
     for i = 1:nrep 
         for j = 1:nvar
             subplot(nvar,1,j)
-	        plot(argvals, res(:,i,j), '-', [rng(1),rng(2)], [0,0], ':')
+	        plot(argvals, res(:,i,j), '.', [rng(1),rng(2)], [0,0], ':')
             axis([rng(1),rng(2),ylimit(1),ylimit(2)])
 	        xlabel(['\fontsize{12} ',argname])
             if iscell(varnames)
@@ -158,16 +158,16 @@ if residual
             if nrep > 1
                 if iscell(casenames)
                     title(['\fontsize{12} ', casenames{2}(j,:), ...
-                        '  RMS = ',num2str(sqrt(MSE(j,i)))])
+                        '  RMS residual = ',num2str(sqrt(MSE(j,i)))])
                 else
                     title(['\fontsize{12} Case ', num2str(i), ...
-                        '  RMS = ',num2str(sqrt(MSE(j,i)))])
+                        '  RMS residual = ',num2str(sqrt(MSE(j,i)))])
                 end
             else
                 if iscell(casenames)
-                    title(['\fontsize{12} RMS = ',num2str(sqrt(MSE(j,i)))])
+                    title(['\fontsize{12} RMS residual = ',num2str(sqrt(MSE(j,i)))])
                 else
-                    title(['\fontsize{12} RMS = ',num2str(sqrt(MSE(j,i)))])
+                    title(['\fontsize{12} RMS residual = ',num2str(sqrt(MSE(j,i)))])
                 end
             end
             if nrep > 1 || nvar > 1, pause;  end

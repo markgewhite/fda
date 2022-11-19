@@ -1,13 +1,9 @@
 # MATLAB Functional Data Analysis library developed by Jim Ramsay 
 
-This is the original code developed by Jim Ramsay for MATLAB. It is no longer available at http://www.psych.mcgill.ca/misc/fda/.
-The FTP site has disappeared. Fortunately, I have been using a copy of this code library for several years, which I am making available here for those in need of the MATLAB version. 
-I have updated it with code version dating from 08/08/2017, the last available version I was able to obtain from the Wayback Machine internet archive, 
+This is the original code developed by Jim Ramsay for MATLAB. I first put it up on Github when the code no longer appeared to be available at http://www.psych.mcgill.ca/misc/fda/. I've been informed it is now there, but I think it might still be convenient to have it available on Github where it can be more easily found. This code is the version dating from 08/08/2017, the last available version I was able to obtain from the Wayback Machine internet archive, 
 https://web.archive.org/web/20170713053602/http://www.psych.mcgill.ca/misc/fda/
 
-So far as I can tell, this is only MATLAB library for FDA available. There is a Python library and, I believe, an R package, but nothing for MATLAB.
-
-For convenience, I reproduce Ramsay's front page to his FDA site, which can still be found in the web archive above:
+I reproduce Ramsay's front page to his FDA site:
 
 ## Ramsay's original welcome:
 
